@@ -1,4 +1,8 @@
 
-public interface IEcommerceCargo extends ICargo {
-
+public interface IEcommerceCargo<T> extends ICargo {
+	
+	public T getCode();
+	
+	
+	
 }
