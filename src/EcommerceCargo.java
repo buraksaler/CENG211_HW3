@@ -1,18 +1,22 @@
 
-public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo{
+public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo<T>{
 	
+	
+	private final String siteName;
 	private final int dailyPackageLimit;
-	private final T code;
+	private final T cargoCode;
 	
-	public EcommerceCargo(int weight, int width, int length, int height, T code, int dailyPackageLimit) {
+	public EcommerceCargo(int weight, int width, int length, int height, T cargoCode, String siteName,
+						  int dailyPackageLimit) {
 		super(weight, width, length, height);
 		this.dailyPackageLimit = dailyPackageLimit;
-		this.code = code;
-		// TODO Auto-generated constructor stub
+		this.cargoCode = cargoCode;
+		this.siteName = siteName;
 	}
 	
-	public T getCode() {
-		return code;
+	@Override
+	public T getCargoCode() {
+		return cargoCode;
 	}
 	
 	
