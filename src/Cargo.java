@@ -1,14 +1,19 @@
 
 public abstract class Cargo implements ICargo {
-
+	
+	private final int size;
+	
+	public Cargo(int weight, int width, int length, int height) {
+		int desi = (width * length * height) / 3000;
+		this.size = Math.max(desi, weight);
+		
+	}
+	
 	@Override
-	public int findDesi(int width, int length, int heigth) {
-		return (width * length * heigth) / 3000;
+	public int getSize() {
+		return size;
 	}
 
-	@Override
-	public int findSize(int desi, int weight) {
-		return Math.max(desi, weight);
-	}
+
 	
 }
