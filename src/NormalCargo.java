@@ -44,8 +44,7 @@ public class NormalCargo extends Cargo implements INormalCargo{
 	}
 	
 	public String getRecipientAddress() {
-		//TODO 
-		return "to be added";
+		return recipientAddress;
 	}
 
 

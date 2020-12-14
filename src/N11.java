@@ -6,4 +6,22 @@ public class N11 extends EcommerceCargo<String> {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String getEcommerceSite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDeliveryDay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
