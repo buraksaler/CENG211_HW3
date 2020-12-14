@@ -9,11 +9,16 @@ public abstract class Cargo implements ICargo {
 		
 	}
 	
+	public enum Days{
+		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY,SUNDAY
+	}
+	
 	@Override
 	public int getSize() {
 		return size;
 	}
-
+	
+	public abstract String getDeliveryDay();
 
 	
 }

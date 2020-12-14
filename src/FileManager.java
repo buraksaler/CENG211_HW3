@@ -82,16 +82,21 @@ public class FileManager {
 					}					
 										
 				}else if (siteName.equals("Hepsiburada")) {
+					
 					if(cargoCode.length() != 8) {
 						throw new CodeFormatNotCorrectException();
 					}
 					cargos.add(new Hepsiburada(weight, width, length, height, cargoCode));
+					
 				}else if (siteName.equals("N11")) {
+					
 					if(cargoCode.length() != 7) {
 						throw new CodeFormatNotCorrectException();
 					}
 					cargos.add(new N11(weight, width, length, height, cargoCode));
+					
 				}else if (siteName.equals("Trendyol")) {
+					
 					if(cargoCode.length() != 8) {
 						throw new CodeFormatNotCorrectException();
 					}
@@ -99,6 +104,7 @@ public class FileManager {
 					try {
 						int integerCargo = Integer.valueOf(cargoCode);
 						cargos.add(new Trendyol(weight, width, length, height, integerCargo));
+						
 					} catch (NumberFormatException e) {
 						e.getMessage();
 					}					

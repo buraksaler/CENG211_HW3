@@ -25,11 +25,36 @@ public class NormalCargo extends Cargo implements INormalCargo{
 	}
 
 
-
+	
 	@Override
 	public int getPrice() {
 		return price;
 	}
+	
+	public String getSenderID() {
+		return senderId;
+	}
+	
+	public String getSenderName() {
+		return senderName;
+	}
+	
+	public String getRecipientName() {
+		return recipientName;
+	}
+	
+	public String getRecipientAddress() {
+		//TODO 
+		return "to be added";
+	}
+
+
+	@Override
+	public String getDeliveryDay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 }

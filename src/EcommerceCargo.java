@@ -19,5 +19,7 @@ public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo
 		return cargoCode;
 	}
 	
+	public abstract String getEcommerceSite();
+	public abstract String getStatus();
 	
 }
