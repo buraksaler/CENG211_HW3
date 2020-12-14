@@ -26,12 +26,12 @@ public class FileManager {
             }
             bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return new ArrayList<String>(lines);               
     }
 	
-	public ArrayList<Cargo> parseLinesIntoCargoObjects(){
+	public ArrayList<Cargo> parseLinesIntoCargoObjects() throws IDNotCorrectException, CodeFormatNotCorrectException{
 		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
 		ArrayList<String> lines = readFile();
 		
@@ -40,6 +40,10 @@ public class FileManager {
 			
 			if(type.equals("Normal")) {
 				String senderId = line.split(",")[0].split(";")[1];
+				if(senderId.length() != 11) {
+					throw new IDNotCorrectException();
+				}
+				
 				String senderName = line.split(",")[0].split(";")[2];
 				String recipientName = line.split(",")[0].split(";")[3];
 				String recipientAddress = line.split(",")[0].split(";")[4] + "," + line.split(",")[1] + 
@@ -64,16 +68,40 @@ public class FileManager {
 				int length = Integer.valueOf(line.split(";")[5]);
 				int height = Integer.valueOf(line.split(";")[6]);
 				
-				if(siteName.equals("Amazon")) {
-					int integerCargo = Integer.valueOf(cargoCode);
-					cargos.add(new Amazon(weight, width, length, height, integerCargo));					
+				if(siteName.equals("Amazon")) {	
+					
+					if(cargoCode.length() != 7) {
+						throw new CodeFormatNotCorrectException();
+					}
+					
+					try {
+						int integerCargo = Integer.valueOf(cargoCode);
+						cargos.add(new Amazon(weight, width, length, height, integerCargo));
+					} catch (NumberFormatException e) {
+						e.getMessage();
+					}					
+										
 				}else if (siteName.equals("Hepsiburada")) {
+					if(cargoCode.length() != 8) {
+						throw new CodeFormatNotCorrectException();
+					}
 					cargos.add(new Hepsiburada(weight, width, length, height, cargoCode));
 				}else if (siteName.equals("N11")) {
+					if(cargoCode.length() != 7) {
+						throw new CodeFormatNotCorrectException();
+					}
 					cargos.add(new N11(weight, width, length, height, cargoCode));
 				}else if (siteName.equals("Trendyol")) {
-					int integerCargo = Integer.valueOf(cargoCode);
-					cargos.add(new Trendyol(weight, width, length, height, integerCargo));
+					if(cargoCode.length() != 8) {
+						throw new CodeFormatNotCorrectException();
+					}
+					
+					try {
+						int integerCargo = Integer.valueOf(cargoCode);
+						cargos.add(new Trendyol(weight, width, length, height, integerCargo));
+					} catch (NumberFormatException e) {
+						e.getMessage();
+					}					
 				}
 				
 				
