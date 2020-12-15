@@ -1,13 +1,12 @@
 
-public class Trendyol extends EcommerceCargo<Integer> {
+public class Trendyol extends EcommerceCargo<Integer,Trendyol> {
 
 	public Trendyol(int weight, int width, int length, int height, Integer cargoCode) {
-		super(weight, width, length, height, cargoCode, "Trendyol", 9);//Daily package limit is 9 for Trendyol
-		// TODO Auto-generated constructor stub
+		super(weight, width, length, height, cargoCode); 
 	}
 
 	@Override
-	public String getEcommerceSite() {
+	public Trendyol getEcommerceSite() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -19,7 +18,13 @@ public class Trendyol extends EcommerceCargo<Integer> {
 	}
 
 	@Override
-	public String getDeliveryDay() {
+	public Cargo.Days getDeliveryDay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Trendyol getDailyPackageLimit() {
 		// TODO Auto-generated method stub
 		return null;
 	}

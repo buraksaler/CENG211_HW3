@@ -1,7 +1,8 @@
 
 public interface ICargo {
 	
-	public String getDeliveryDay();
+	
+	public Cargo.Days getDeliveryDay();
 	public int getSize();
 	
 	

@@ -1,17 +1,13 @@
 
-public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo<T>{
+public abstract class EcommerceCargo<T,E> extends Cargo implements IEcommerceCargo<T,E>{
 	
 	
-	private final String siteName;
-	private final int dailyPackageLimit;
 	private final T cargoCode;
 	
-	public EcommerceCargo(int weight, int width, int length, int height, T cargoCode, String siteName,
-						  int dailyPackageLimit) {
+	public EcommerceCargo(int weight, int width, int length, int height, T cargoCode) {
+						 
 		super(weight, width, length, height);
-		this.dailyPackageLimit = dailyPackageLimit;
 		this.cargoCode = cargoCode;
-		this.siteName = siteName;
 	}
 	
 	@Override
@@ -19,7 +15,8 @@ public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo
 		return cargoCode;
 	}
 	
-	public abstract String getEcommerceSite();
+	public abstract E getEcommerceSite();
+	
 	public abstract String getStatus();
 	
 }

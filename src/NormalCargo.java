@@ -49,10 +49,14 @@ public class NormalCargo extends Cargo implements INormalCargo{
 
 
 	@Override
-	public String getDeliveryDay() {
+	public Cargo.Days getDeliveryDay() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+
 	
 	
 	

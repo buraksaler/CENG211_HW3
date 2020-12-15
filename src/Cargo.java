@@ -9,7 +9,7 @@ public abstract class Cargo implements ICargo {
 		
 	}
 	
-	public enum Days{
+	public static enum Days{
 		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY,SUNDAY
 	}
 	
@@ -18,7 +18,7 @@ public abstract class Cargo implements ICargo {
 		return size;
 	}
 	
-	public abstract String getDeliveryDay();
+	public abstract Days getDeliveryDay();
 
 	
 }
