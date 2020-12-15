@@ -1,5 +1,5 @@
 
-public abstract class Cargo implements ICargo {
+public abstract class Cargo<T> implements ICargo<T> {
 	
 	private final int size;
 	
@@ -19,6 +19,8 @@ public abstract class Cargo implements ICargo {
 	}
 	
 	public abstract Days getDeliveryDay();
+	
+	public abstract T getCargoCode();
 
 	
 }

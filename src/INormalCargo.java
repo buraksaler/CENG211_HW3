@@ -1,5 +1,5 @@
 
-public interface INormalCargo extends ICargo {	
+public interface INormalCargo<T> extends ICargo<T> {	
 	
 	
 	public Cargo.Days getDeliveryDay();
@@ -9,4 +9,8 @@ public interface INormalCargo extends ICargo {
 	public int getPrice();
 	
 	public void applyDiscount(int discountPercent);
+	
+	public void generateCargoCode();
+	
+	
 }

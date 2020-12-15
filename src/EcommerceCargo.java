@@ -1,5 +1,5 @@
 
-public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo<T>{
+public abstract class EcommerceCargo<T> extends Cargo<T> implements IEcommerceCargo<T>{
 	
 	
 	private final T cargoCode;

@@ -1,5 +1,5 @@
 
-public class NormalCargo extends Cargo implements INormalCargo{
+public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>{
 	
 	private final String senderId;
 	private final String senderName;
@@ -50,6 +50,21 @@ public class NormalCargo extends Cargo implements INormalCargo{
 
 	@Override
 	public Cargo.Days getDeliveryDay() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public void generateCargoCode() {
+		
+	}
+
+
+
+	@Override
+	public Integer getCargoCode() {
 		// TODO Auto-generated method stub
 		return null;
 	}
