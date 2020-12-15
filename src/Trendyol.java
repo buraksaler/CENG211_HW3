@@ -1,14 +1,13 @@
 
-public class Trendyol extends EcommerceCargo<Integer,Trendyol> {
+public class Trendyol extends EcommerceCargo<Integer> {
 
 	public Trendyol(int weight, int width, int length, int height, Integer cargoCode) {
 		super(weight, width, length, height, cargoCode); 
 	}
 
 	@Override
-	public Trendyol getEcommerceSite() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getEcommerceSite() {
+		return "Trendyol";
 	}
 
 	@Override
@@ -24,9 +23,8 @@ public class Trendyol extends EcommerceCargo<Integer,Trendyol> {
 	}
 
 	@Override
-	public Trendyol getDailyPackageLimit() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getDailyPackageLimit() {
+		return 9;
 	}
 
 }

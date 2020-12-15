@@ -1,14 +1,13 @@
 
-public class Hepsiburada extends EcommerceCargo<String,Hepsiburada> {
+public class Hepsiburada extends EcommerceCargo<String> {
 
 	public Hepsiburada(int weight, int width, int length, int height, String cargoCode) {
 		super(weight, width, length, height, cargoCode);
 	}
 
 	@Override
-	public Hepsiburada getEcommerceSite() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getEcommerceSite() {
+		return "Hepsiburada";
 	}
 
 	@Override
@@ -24,9 +23,8 @@ public class Hepsiburada extends EcommerceCargo<String,Hepsiburada> {
 	}
 
 	@Override
-	public Hepsiburada getDailyPackageLimit() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getDailyPackageLimit() {
+		return 7;
 	}
 	
 }

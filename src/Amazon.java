@@ -1,14 +1,13 @@
 
-public class Amazon extends EcommerceCargo<Integer,Amazon>{
+public class Amazon extends EcommerceCargo<Integer>{
 	
 	public Amazon(int weight, int width, int length, int height, Integer cargoCode) {
 		super(weight, width, length, height, cargoCode); 
 	}
 
 	@Override
-	public Amazon getEcommerceSite() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getEcommerceSite() {
+		return "Amazon";
 	}
 
 	@Override
@@ -24,9 +23,8 @@ public class Amazon extends EcommerceCargo<Integer,Amazon>{
 	}
 
 	@Override
-	public Amazon getDailyPackageLimit() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getDailyPackageLimit() {
+		return 5;
 	}
 
 	

@@ -1,5 +1,5 @@
 
-public abstract class EcommerceCargo<T,E> extends Cargo implements IEcommerceCargo<T,E>{
+public abstract class EcommerceCargo<T> extends Cargo implements IEcommerceCargo<T>{
 	
 	
 	private final T cargoCode;
@@ -15,8 +15,12 @@ public abstract class EcommerceCargo<T,E> extends Cargo implements IEcommerceCar
 		return cargoCode;
 	}
 	
-	public abstract E getEcommerceSite();
+	public abstract String getEcommerceSite();
 	
 	public abstract String getStatus();
+
+	public abstract int getDailyPackageLimit();
+
+	public abstract Cargo.Days getDeliveryDay();
 	
 }

@@ -1,9 +1,9 @@
 
-public interface IEcommerceCargo<T,E> extends ICargo {
+public interface IEcommerceCargo<T> extends ICargo {
 	
 	
-	//E is the ecommerce cargo type (amazon,n11,trendyol,hepsiburada)
-	public E getDailyPackageLimit();  
+	
+	public int getDailyPackageLimit();  
 	
 	public Cargo.Days getDeliveryDay();
 	
@@ -12,7 +12,7 @@ public interface IEcommerceCargo<T,E> extends ICargo {
 	//T is the Code format type (Integer or String)
 	public T getCargoCode();
 	
-	public E getEcommerceSite();
+	public String getEcommerceSite();
 	
 	public String getStatus();
 	
