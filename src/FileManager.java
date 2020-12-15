@@ -31,7 +31,7 @@ public class FileManager {
         return new ArrayList<String>(lines);               
     }
 	
-	public ArrayList<Cargo> parseLinesIntoCargoObjects() throws IDNotCorrectException, CodeFormatNotCorrectException{
+	public ArrayList<Cargo> parseLinesIntoCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
 		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
 		ArrayList<String> lines = readFile();
 		
@@ -71,7 +71,7 @@ public class FileManager {
 				if(siteName.equals("Amazon")) {	
 					
 					if(cargoCode.length() != 7) {
-						throw new CodeFormatNotCorrectException();
+						throw new CodeFormatLengthNotCorrectException();
 					}
 					
 					try {
@@ -84,21 +84,21 @@ public class FileManager {
 				}else if (siteName.equals("Hepsiburada")) {
 					
 					if(cargoCode.length() != 8) {
-						throw new CodeFormatNotCorrectException();
+						throw new CodeFormatLengthNotCorrectException();
 					}
 					cargos.add(new Hepsiburada(weight, width, length, height, cargoCode));
 					
 				}else if (siteName.equals("N11")) {
 					
 					if(cargoCode.length() != 7) {
-						throw new CodeFormatNotCorrectException();
+						throw new CodeFormatLengthNotCorrectException();
 					}
 					cargos.add(new N11(weight, width, length, height, cargoCode));
 					
 				}else if (siteName.equals("Trendyol")) {
 					
 					if(cargoCode.length() != 8) {
-						throw new CodeFormatNotCorrectException();
+						throw new CodeFormatLengthNotCorrectException();
 					}
 					
 					try {
