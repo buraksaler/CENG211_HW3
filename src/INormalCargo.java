@@ -2,8 +2,6 @@
 public interface INormalCargo<T> extends ICargo<T> {	
 	
 	
-	public Cargo.Days getDeliveryDay();
-	
 	public int getSize();
 	
 	public int getPrice();

@@ -9,13 +9,7 @@ public class N11 extends EcommerceCargo<String> {
 	public String getEcommerceSite() {
 		return "N11";
 	}
-
-	@Override
-	public Cargo.Days getDeliveryDay() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+ 
 	@Override
 	public int getDailyPackageLimit() {
 		return 6;

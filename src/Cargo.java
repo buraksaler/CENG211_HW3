@@ -11,16 +11,11 @@ public abstract class Cargo<T> implements ICargo<T> {
 		
 	}
 	
-	public static enum Days{
-		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY,SUNDAY
-	}
 	
 	@Override
 	public int getSize() {
 		return size;
 	}
-	
-	public abstract Days getDeliveryDay();
 	
 	public T getCargoCode() {
 		return cargoCode;

@@ -46,12 +46,6 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 		return recipientAddress;
 	}
 
-	@Override
-	public Cargo.Days getDeliveryDay() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	public static int generateCargoCode() {
 		Random random = new Random();
