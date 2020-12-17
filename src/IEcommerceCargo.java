@@ -13,6 +13,7 @@ public interface IEcommerceCargo<T> extends ICargo<T> {
 	public String getEcommerceSite();
 	
 	public String getStatus();
+
 	
 	
 	

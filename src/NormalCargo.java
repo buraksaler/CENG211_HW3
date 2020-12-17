@@ -1,10 +1,16 @@
+import java.util.Random;
 
 public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>{
-	
+
+
+
+
 	private final String senderId;
 	private final String senderName;
 	private final String recipientName;
 	private final String recipientAddress;
+	private final int cargoCode;
+	
 	private int price = (int) (18.5 + (3* super.getSize()));
 
 	public NormalCargo(int weight, int width, int length, int height, String senderId, String senderName,
@@ -14,7 +20,8 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 		this.senderName = senderName;
 		this.recipientName = recipientName;
 		this.recipientAddress = recipientAddress;
-		
+		this.cargoCode = generateCargoCode();
+  		
 	}
 
 	
@@ -54,22 +61,37 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 		return null;
 	}
 
-
-
+	
 	@Override
-	public void generateCargoCode() {
+	public int generateCargoCode() {
+		Random random = new Random();
+		return random.nextInt(9000000) + 1000000; // 7 digit random number
 		
 	}
+	
+	
+	@Override
+	public Integer getCargoCode() {
+		return cargoCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 
 
 
 	@Override
-	public Integer getCargoCode() {
+	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		return super.toString();
 	}
 
 
+
+	
 
 
 	

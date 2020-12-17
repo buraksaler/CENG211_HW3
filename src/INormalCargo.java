@@ -10,7 +10,7 @@ public interface INormalCargo<T> extends ICargo<T> {
 	
 	public void applyDiscount(int discountPercent);
 	
-	public void generateCargoCode();
+	public int generateCargoCode();
 	
 	
 }
