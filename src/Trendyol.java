@@ -8,13 +8,7 @@ public class Trendyol extends EcommerceCargo<Integer> {
 	@Override
 	public String getEcommerceSite() {
 		return "Trendyol";
-	}
-
-	@Override
-	public String getStatus() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	}	
 
 	@Override
 	public Cargo.Days getDeliveryDay() {

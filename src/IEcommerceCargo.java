@@ -8,12 +8,8 @@ public interface IEcommerceCargo<T> extends ICargo<T> {
 	
 	public int getSize();
 	
-	public T getCargoCode();
-	
 	public String getEcommerceSite();
 	
-	public String getStatus();
-
 	
 	
 	

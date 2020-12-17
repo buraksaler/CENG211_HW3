@@ -11,12 +11,6 @@ public class Amazon extends EcommerceCargo<Integer>{
 	}
 
 	@Override
-	public String getStatus() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Cargo.Days getDeliveryDay() {
 		// TODO Auto-generated method stub
 		return null;

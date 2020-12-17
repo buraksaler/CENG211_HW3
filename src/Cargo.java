@@ -2,10 +2,12 @@
 public abstract class Cargo<T> implements ICargo<T> {
 	
 	private final int size;
+	private final T cargoCode;
 	
-	public Cargo(int weight, int width, int length, int height) {
+	public Cargo(int weight, int width, int length, int height, T cargoCode) {
 		int desi = (width * length * height) / 3000;
 		this.size = Math.max(desi, weight);
+		this.cargoCode = cargoCode;
 		
 	}
 	
@@ -20,7 +22,9 @@ public abstract class Cargo<T> implements ICargo<T> {
 	
 	public abstract Days getDeliveryDay();
 	
-	public abstract T getCargoCode();
+	public T getCargoCode() {
+		return cargoCode;
+	}
 
 	
 }

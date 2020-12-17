@@ -11,12 +11,6 @@ public class Hepsiburada extends EcommerceCargo<String> {
 	}
 
 	@Override
-	public String getStatus() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Cargo.Days getDeliveryDay() {
 		// TODO Auto-generated method stub
 		return null;

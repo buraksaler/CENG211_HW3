@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileManager {
+	
 	private final String filePath;
 
-	
 	public FileManager(String filePath) {
 		this.filePath = filePath;		
 	}
@@ -109,16 +109,9 @@ public class FileManager {
 						e.getMessage();
 					}					
 				}
-				
-				
 			}
 		}
 		
 		return new ArrayList<Cargo>(cargos);
-
-		
 	}
-	
-	
-	
 }
