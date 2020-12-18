@@ -6,7 +6,7 @@ public interface IEcommerceCargo<T> extends ICargo<T> {
 	public final int N11_LIMIT = 6;
 	public final int TRENDYOL_LIMIT = 9; 
 	
-	public int getDailyPackageLimit();  
+	
 	
 	public int getSize();
 	

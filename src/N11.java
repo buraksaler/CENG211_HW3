@@ -10,9 +10,5 @@ public class N11 extends EcommerceCargo<String> {
 		return "N11";
 	}
  
-	@Override
-	public int getDailyPackageLimit() {
-		return 6;
-	}
 
 }

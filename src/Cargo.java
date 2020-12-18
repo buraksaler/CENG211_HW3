@@ -5,8 +5,10 @@ public abstract class Cargo<T> implements ICargo<T> {
 	private final T cargoCode;
 	
 	public Cargo(int weight, int width, int length, int height, T cargoCode) {
+		
 		int desi = (width * length * height) / 3000;
 		this.size = Math.max(desi, weight);
+		
 		this.cargoCode = cargoCode;
 		
 	}

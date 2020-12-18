@@ -10,9 +10,5 @@ public class Trendyol extends EcommerceCargo<Integer> {
 		return "Trendyol";
 	}	
 
-	@Override
-	public int getDailyPackageLimit() {
-		return 9;
-	}
 
 }

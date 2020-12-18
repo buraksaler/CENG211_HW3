@@ -10,7 +10,6 @@ public abstract class EcommerceCargo<T> extends Cargo<T> implements IEcommerceCa
 	
 	public abstract String getEcommerceSite();
 	
-	public abstract int getDailyPackageLimit();
 
 	
 	public void setStatus(String newStatus) {

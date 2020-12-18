@@ -56,56 +56,65 @@ public class AppAssistant {
 		
 	}
 	
-	public void checkLimitAndSetStatus(EcommerceCargo ecommerceCargo) {
+	public boolean checkLimit(EcommerceCargo<?> ecommerceCargo) {
 		String siteName = ecommerceCargo.getEcommerceSite();
 		
 		if(siteName.equals("Amazon")) {
 			
 			if(amazonCounter <= IEcommerceCargo.AMAZON_LIMIT) {
-				ecommerceCargo.setStatus("Accepted");
+				amazonCounter++;
 				acceptedCounter++;
+				return true;
 			}else {
 				ecommerceCargo.setStatus("Not Accepted");
 				notAcceptedCounter++;
+				return false;
 			}
-			amazonCounter++;
+			
 			
 		}else if(siteName.equals("Hepsiburada")) {
 			
 			if(hepsiburadaCounter <= IEcommerceCargo.HEPSIBURADA_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
+				hepsiburadaCounter++;
+				return true;
 			}else {
 				ecommerceCargo.setStatus("Not Accepted");
 				notAcceptedCounter++;
+				return false;
 			}
-			hepsiburadaCounter++;
+		
 			
 		}else if(siteName.equals("N11")) {
 			
 			if(n11Counter <= IEcommerceCargo.N11_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
+				n11Counter++;
+				return true;
 			}else {
 				ecommerceCargo.setStatus("Not Accepted");
 				notAcceptedCounter++;
+				return false;
 			}
-			n11Counter++;
 			
-		}else if(siteName.equals("Trendyol")) {
+		}else{
 			
 			if(trendyolCounter <= IEcommerceCargo.TRENDYOL_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
+				trendyolCounter++;
+				return true;
 			}else {
 				ecommerceCargo.setStatus("Not Accepted");
 				notAcceptedCounter++;
+				return false;
 			}
-			trendyolCounter++;
+			
 		}
 		
 	}
-	
 	public int getAcceptedCounter() {
 		return acceptedCounter;
 	}

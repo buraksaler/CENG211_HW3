@@ -10,10 +10,5 @@ public class Amazon extends EcommerceCargo<Integer>{
 		return "Amazon";
 	}
 
-	@Override
-	public int getDailyPackageLimit() {
-		return 5;
-	}
-
 	
 }

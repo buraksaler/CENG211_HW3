@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class FileManager {
 	
+	AppAssistant appAssistant = new AppAssistant();
 	private final String filePath;
 
 	public FileManager(String filePath) {
@@ -32,8 +33,8 @@ public class FileManager {
     }
 	
 	//this method is just valid for the given csv file
-	public ArrayList<Cargo> parseLinesIntoCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
-		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
+	private ArrayList<Cargo<?>> getCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+		ArrayList<Cargo<?>> cargos = new ArrayList<Cargo<?>>();
 		ArrayList<String> lines = readFile();
 		
 		for(String line : lines) {
@@ -113,6 +114,33 @@ public class FileManager {
 			}
 		}
 		
-		return new ArrayList<Cargo>(cargos);
+		return new ArrayList<Cargo<?>>(cargos);
+	}
+	
+	
+	
+	
+	public ArrayList<EcommerceCargo<?>> getEcommerceCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+		ArrayList<EcommerceCargo<?>> ecommerceCargos = new ArrayList<EcommerceCargo<?>>();
+		for(Cargo<?> cargo : getCargoObjects()) {
+			if(cargo instanceof EcommerceCargo<?>) {
+				appAssistant.checkLimitAndSetStatus((EcommerceCargo<?>) cargo);
+				ecommerceCargos.add((EcommerceCargo<?>) cargo);
+			}
+		}
+		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
+	}
+	
+	
+	public ArrayList<NormalCargo> getNormalCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+		ArrayList<NormalCargo> normalCargos = new ArrayList<NormalCargo>();
+		for(Cargo<?> cargo : getCargoObjects()) {
+			if(cargo instanceof NormalCargo) {
+				normalCargos.add((NormalCargo) cargo);
+			}
+		}
+		return new ArrayList<NormalCargo>(normalCargos);
+		
+		
 	}
 }

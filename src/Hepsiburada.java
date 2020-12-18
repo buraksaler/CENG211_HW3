@@ -10,9 +10,5 @@ public class Hepsiburada extends EcommerceCargo<String> {
 		return "Hepsiburada";
 	}
 
-	@Override
-	public int getDailyPackageLimit() {
-		return 7;
-	}
 	
 }
