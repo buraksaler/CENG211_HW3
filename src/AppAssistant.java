@@ -2,21 +2,22 @@ import java.util.Date;
 
 public class AppAssistant {
 
-	private final int AMAZON_LIMIT = 5;
-	private final int HEPSIBURADA_LIMIT = 7;
-	private final int N11_LIMIT = 6;
-	private final int TRENDYOL_LIMIT = 9;
+	private int amazonCounter;
+	private int hepsiburadaCounter;
+	private int n11Counter;
+	private int trendyolCounter;
 	
-	private int amazonCounter = 0;
-	private int hepsiburadaCounter = 0;
-	private int n11Counter = 0;
-	private int trendyolCounter = 0;
-	
-	private int acceptedCounter = 0;
-	private int notAcceptedCounter = 0;
+	private int acceptedCounter;
+	private int notAcceptedCounter;
 	
 	public AppAssistant() {
-		
+		amazonCounter = 0;
+		hepsiburadaCounter = 0;
+		n11Counter = 0;
+		trendyolCounter = 0;
+		acceptedCounter = 0;
+		notAcceptedCounter = 0;
+	
 	}
 
 	Date date = new Date();  
@@ -60,7 +61,7 @@ public class AppAssistant {
 		
 		if(siteName.equals("Amazon")) {
 			
-			if(amazonCounter <= AMAZON_LIMIT) {
+			if(amazonCounter <= IEcommerceCargo.AMAZON_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
 			}else {
@@ -71,7 +72,7 @@ public class AppAssistant {
 			
 		}else if(siteName.equals("Hepsiburada")) {
 			
-			if(hepsiburadaCounter <= HEPSIBURADA_LIMIT) {
+			if(hepsiburadaCounter <= IEcommerceCargo.HEPSIBURADA_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
 			}else {
@@ -82,7 +83,7 @@ public class AppAssistant {
 			
 		}else if(siteName.equals("N11")) {
 			
-			if(n11Counter <= N11_LIMIT) {
+			if(n11Counter <= IEcommerceCargo.N11_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
 			}else {
@@ -93,7 +94,7 @@ public class AppAssistant {
 			
 		}else if(siteName.equals("Trendyol")) {
 			
-			if(trendyolCounter <= TRENDYOL_LIMIT) {
+			if(trendyolCounter <= IEcommerceCargo.TRENDYOL_LIMIT) {
 				ecommerceCargo.setStatus("Accepted");
 				acceptedCounter++;
 			}else {

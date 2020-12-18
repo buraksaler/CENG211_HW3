@@ -31,6 +31,7 @@ public class FileManager {
         return new ArrayList<String>(lines);               
     }
 	
+	//this method is just valid for the given csv file
 	public ArrayList<Cargo> parseLinesIntoCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
 		ArrayList<Cargo> cargos = new ArrayList<Cargo>();
 		ArrayList<String> lines = readFile();
