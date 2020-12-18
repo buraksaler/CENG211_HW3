@@ -1,13 +1,11 @@
 import java.util.Date;
 
 public class AppAssistant {
-	
-	
 
 	private final int AMAZON_LIMIT = 5;
-	private final int HEPSIBURADA_LIMIT = 5;
-	private final int N11_LIMIT = 5;
-	private final int TRENDYOL_LIMIT = 5;
+	private final int HEPSIBURADA_LIMIT = 7;
+	private final int N11_LIMIT = 6;
+	private final int TRENDYOL_LIMIT = 9;
 	
 	private int amazonCounter = 0;
 	private int hepsiburadaCounter = 0;
