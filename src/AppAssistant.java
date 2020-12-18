@@ -1,29 +1,30 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AppAssistant {
 
-	private int amazonCounter;
-	private int hepsiburadaCounter;
-	private int n11Counter;
-	private int trendyolCounter;
+	private int amazonCounter = 0;
+	private int hepsiburadaCounter = 0;
+	private int n11Counter = 0;
+	private int trendyolCounter = 0;
 	
-	private int acceptedCounter;
-	private int notAcceptedCounter;
+	private int acceptedCounter = 0;
+	private int notAcceptedCounter = 0;
+	private FileManager fileManager;	
+	private ArrayList<EcommerceCargo<?>> ecommerceCargos;
 	
-	public AppAssistant() {
-		amazonCounter = 0;
-		hepsiburadaCounter = 0;
-		n11Counter = 0;
-		trendyolCounter = 0;
-		acceptedCounter = 0;
-		notAcceptedCounter = 0;
-	
+	public AppAssistant(FileManager fileManager) throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
+		this.fileManager = fileManager;
+		ecommerceCargos = fileManager.getEcommerceCargos();
+		updatedEcommerceCargos();
 	}
-
+	
 	Date date = new Date();  
 
 	public enum Days{ MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} 
 	 
+	
+	
 	public Days getDeliveryDay() {
 		String day = date.toString();
 		day = day.substring(0,3); //date returns whole date and time so we just need the day
@@ -56,66 +57,74 @@ public class AppAssistant {
 		
 	}
 	
-	public boolean checkLimit(EcommerceCargo<?> ecommerceCargo) {
-		String siteName = ecommerceCargo.getEcommerceSite();
-		
-		if(siteName.equals("Amazon")) {
+	private void updatedEcommerceCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
+		for(EcommerceCargo<?> ecommerceCargo : ecommerceCargos ) {
+			String siteName = ecommerceCargo.getEcommerceSite();
+			if(siteName.equals("Amazon")) {
+				
+				if(amazonCounter <= IEcommerceCargo.AMAZON_LIMIT) {
+					ecommerceCargo.setStatus("Accepted");
+					amazonCounter++;
+					acceptedCounter++;
+					
+				}else {
+					ecommerceCargo.setStatus("Not Accepted");
+					notAcceptedCounter++;
+					
+				}
+				
+				
+			}else if(siteName.equals("Hepsiburada")) {
+				
+				if(hepsiburadaCounter <= IEcommerceCargo.HEPSIBURADA_LIMIT) {
+					ecommerceCargo.setStatus("Accepted");
+					acceptedCounter++;
+					hepsiburadaCounter++;
+					
+				}else {
+					ecommerceCargo.setStatus("Not Accepted");
+					notAcceptedCounter++;
+					
+				}
 			
-			if(amazonCounter <= IEcommerceCargo.AMAZON_LIMIT) {
-				amazonCounter++;
-				acceptedCounter++;
-				return true;
-			}else {
-				ecommerceCargo.setStatus("Not Accepted");
-				notAcceptedCounter++;
-				return false;
+				
+			}else if(siteName.equals("N11")) {
+				
+				if(n11Counter <= IEcommerceCargo.N11_LIMIT) {
+					ecommerceCargo.setStatus("Accepted");
+					acceptedCounter++;
+					n11Counter++;
+					
+				}else {
+					ecommerceCargo.setStatus("Not Accepted");
+					notAcceptedCounter++;
+					
+				}
+				
+			}else{
+				
+				if(trendyolCounter <= IEcommerceCargo.TRENDYOL_LIMIT) {
+					ecommerceCargo.setStatus("Accepted");
+					acceptedCounter++;
+					trendyolCounter++;
+					
+				}else {
+					ecommerceCargo.setStatus("Not Accepted");
+					notAcceptedCounter++;
+					
+				}
+				
 			}
-			
-			
-		}else if(siteName.equals("Hepsiburada")) {
-			
-			if(hepsiburadaCounter <= IEcommerceCargo.HEPSIBURADA_LIMIT) {
-				ecommerceCargo.setStatus("Accepted");
-				acceptedCounter++;
-				hepsiburadaCounter++;
-				return true;
-			}else {
-				ecommerceCargo.setStatus("Not Accepted");
-				notAcceptedCounter++;
-				return false;
-			}
-		
-			
-		}else if(siteName.equals("N11")) {
-			
-			if(n11Counter <= IEcommerceCargo.N11_LIMIT) {
-				ecommerceCargo.setStatus("Accepted");
-				acceptedCounter++;
-				n11Counter++;
-				return true;
-			}else {
-				ecommerceCargo.setStatus("Not Accepted");
-				notAcceptedCounter++;
-				return false;
-			}
-			
-		}else{
-			
-			if(trendyolCounter <= IEcommerceCargo.TRENDYOL_LIMIT) {
-				ecommerceCargo.setStatus("Accepted");
-				acceptedCounter++;
-				trendyolCounter++;
-				return true;
-			}else {
-				ecommerceCargo.setStatus("Not Accepted");
-				notAcceptedCounter++;
-				return false;
-			}
-			
 		}
+	
 		
 	}
-	public int getAcceptedCounter() {
+	
+	public ArrayList<EcommerceCargo<?>> getUpdatedEcommerceCargos(){
+		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
+	}
+	public int getAcceptedCounter() throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
+		acceptedCounter += fileManager.getNormalCargos().size();
 		return acceptedCounter;
 	}
 

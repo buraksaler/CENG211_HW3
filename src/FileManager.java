@@ -127,7 +127,7 @@ public class FileManager {
 				ecommerceCargos.add((EcommerceCargo<?>) cargo);
 			}
 		}
-		return ecommerceCargos;
+		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
 	}
 	
 	
