@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class FileManager {
 	
-	AppAssistant appAssistant = new AppAssistant();
+
 	private final String filePath;
 
 	public FileManager(String filePath) {
@@ -124,11 +124,10 @@ public class FileManager {
 		ArrayList<EcommerceCargo<?>> ecommerceCargos = new ArrayList<EcommerceCargo<?>>();
 		for(Cargo<?> cargo : getCargoObjects()) {
 			if(cargo instanceof EcommerceCargo<?>) {
-				appAssistant.checkLimitAndSetStatus((EcommerceCargo<?>) cargo);
 				ecommerceCargos.add((EcommerceCargo<?>) cargo);
 			}
 		}
-		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
+		return ecommerceCargos;
 	}
 	
 	
