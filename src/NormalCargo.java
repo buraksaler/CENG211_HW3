@@ -1,6 +1,8 @@
 import java.util.Random;
 
-public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>{
+public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>, IDiscountedPriceCalculator{
+
+
 
 	private final String senderId;
 	private final String senderName;
@@ -24,6 +26,12 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 	public void applyDiscount(int discountPercent) {
 		price *= 1 - (discountPercent/100);
 	}
+	
+	@Override
+	public int getDiscountedPrice() {
+		return price;
+	}
+	
 
 	@Override
 	public int getPrice() {
