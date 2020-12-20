@@ -7,9 +7,11 @@ public class FileManager {
 	
 
 	private final String filePath;
+	private ArrayList<Cargo<?>> cargoObjects;
 
-	public FileManager(String filePath) {
-		this.filePath = filePath;		
+	public FileManager(String filePath) throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
+		this.filePath = filePath;
+		assignCargoObjects();
 	}
 	
 	private ArrayList<String> readFile() {
@@ -33,7 +35,7 @@ public class FileManager {
     }
 	
 	//this method is just valid for the given csv file
-	private ArrayList<Cargo<?>> getCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+	private void assignCargoObjects() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
 		ArrayList<Cargo<?>> cargos = new ArrayList<Cargo<?>>();
 		ArrayList<String> lines = readFile();
 		
@@ -42,6 +44,7 @@ public class FileManager {
 			
 			if(type.equals("Normal")) {
 				String senderId = line.split(",")[0].split(";")[1];
+				
 				if(senderId.length() != 11) {
 					throw new IDNotCorrectException();
 				}
@@ -76,12 +79,10 @@ public class FileManager {
 						throw new CodeFormatLengthNotCorrectException();
 					}
 					
-					try {
-						int integerCargo = Integer.valueOf(cargoCode);
-						cargos.add(new Amazon(weight, width, length, height, integerCargo));
-					} catch (NumberFormatException e) {
-						e.getMessage();
-					}					
+					//Integer.valueOf throws NumberFormatException
+					int integerCargo = Integer.valueOf(cargoCode);
+					cargos.add(new Amazon(weight, width, length, height, integerCargo));
+										
 										
 				}else if (siteName.equals("Hepsiburada")) {
 					
@@ -102,27 +103,22 @@ public class FileManager {
 					if(cargoCode.length() != 8) {
 						throw new CodeFormatLengthNotCorrectException();
 					}
-					
-					try {
-						int integerCargo = Integer.valueOf(cargoCode);
-						cargos.add(new Trendyol(weight, width, length, height, integerCargo));
-						
-					} catch (NumberFormatException e) {
-						e.getMessage();
-					}					
+					int integerCargo = Integer.valueOf(cargoCode);
+					cargos.add(new Trendyol(weight, width, length, height, integerCargo));
+											
 				}
 			}
 		}
 		
-		return new ArrayList<Cargo<?>>(cargos);
+		this.cargoObjects = new ArrayList<Cargo<?>>(cargos);
 	}
 	
 	
 	
 	
-	public ArrayList<EcommerceCargo<?>> getEcommerceCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+	public ArrayList<EcommerceCargo<?>> getEcommerceCargos(){
 		ArrayList<EcommerceCargo<?>> ecommerceCargos = new ArrayList<EcommerceCargo<?>>();
-		for(Cargo<?> cargo : getCargoObjects()) {
+		for(Cargo<?> cargo : this.cargoObjects) {
 			if(cargo instanceof EcommerceCargo<?>) {
 				ecommerceCargos.add((EcommerceCargo<?>) cargo);
 			}
@@ -131,9 +127,9 @@ public class FileManager {
 	}
 	
 	
-	public ArrayList<NormalCargo> getNormalCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+	public ArrayList<NormalCargo> getNormalCargos(){
 		ArrayList<NormalCargo> normalCargos = new ArrayList<NormalCargo>();
-		for(Cargo<?> cargo : getCargoObjects()) {
+		for(Cargo<?> cargo : this.cargoObjects) {
 			if(cargo instanceof NormalCargo) {
 				normalCargos.add((NormalCargo) cargo);
 			}

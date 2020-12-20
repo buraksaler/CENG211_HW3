@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class AppAssistant {
 
 	private int amazonCounter = 0;
@@ -10,13 +11,13 @@ public class AppAssistant {
 	
 	private int acceptedCounter = 0;
 	private int notAcceptedCounter = 0;
-	private FileManager fileManager;	
-	private ArrayList<EcommerceCargo<?>> ecommerceCargos;
+
+	FileManager fileManager = new FileManager("HW3_PackagesToAccept.csv");
+	ArrayList<EcommerceCargo<?>> ecommerceCargos = fileManager.getEcommerceCargos();
+	ArrayList<NormalCargo> normalCargos = fileManager.getNormalCargos();
 	
-	public AppAssistant(FileManager fileManager) throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
-		this.fileManager = fileManager;
-		ecommerceCargos = fileManager.getEcommerceCargos();
-		updatedEcommerceCargos();
+	public AppAssistant() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
+		updateEcommerceCargos();
 	}
 	
 	Date date = new Date();  
@@ -57,8 +58,8 @@ public class AppAssistant {
 		
 	}
 	
-	private void updatedEcommerceCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
-		for(EcommerceCargo<?> ecommerceCargo : ecommerceCargos ) {
+	private void updateEcommerceCargos() throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
+		for(EcommerceCargo<?> ecommerceCargo : ecommerceCargos) {
 			String siteName = ecommerceCargo.getEcommerceSite();
 			if(siteName.equals("Amazon")) {
 				
@@ -116,15 +117,18 @@ public class AppAssistant {
 				
 			}
 		}
-	
-		
 	}
 	
-	public ArrayList<EcommerceCargo<?>> getUpdatedEcommerceCargos(){
+	public ArrayList<NormalCargo> getNormalCargos(){
+		return new ArrayList<NormalCargo>(this.normalCargos);
+	}
+	
+	public ArrayList<EcommerceCargo<?>> getEcommerceCargos(){
 		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
 	}
+	
 	public int getAcceptedCounter() throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
-		acceptedCounter += fileManager.getNormalCargos().size();
+		acceptedCounter += getNormalCargos().size();
 		return acceptedCounter;
 	}
 

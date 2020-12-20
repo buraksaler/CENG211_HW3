@@ -3,8 +3,8 @@ public class CargoAcceptanceApp {
 
 	public static void main(String[] args) throws IDNotCorrectException, CodeFormatLengthNotCorrectException {
 		
-		FileManager fileManager = new FileManager("HW3_PackagesToAccept.csv");
-		AppAssistant appAssistant = new AppAssistant(fileManager);
+		
+		AppAssistant appAssistant = new AppAssistant();
 		int index = 1;
 		
 		
@@ -15,7 +15,7 @@ public class CargoAcceptanceApp {
 		System.out.println("Normal Cargo Packages: ");
 		
 		
-		for(NormalCargo normalCargo : fileManager.getNormalCargos()) {
+		for(NormalCargo normalCargo : appAssistant.getNormalCargos()) {
 			System.out.println(index++ +" " + normalCargo.getCargoCode() + " "+ normalCargo.getSenderID() + " " + normalCargo.getSenderName() + 
 							   " " + normalCargo.getRecipientName() + " " + normalCargo.getRecipientAddress() + " " + normalCargo.getSize() +
 							   " " + normalCargo.getPrice() + " " + appAssistant.getDeliveryDay());
@@ -25,7 +25,7 @@ public class CargoAcceptanceApp {
 		index = 1;
 	
 		
-		for(EcommerceCargo<?> ecommerceCargo : appAssistant.getUpdatedEcommerceCargos()) {
+		for(EcommerceCargo<?> ecommerceCargo : appAssistant.getEcommerceCargos()) {
 			System.out.println(index++ + " " + ecommerceCargo.getEcommerceSite() + " " + ecommerceCargo.getCargoCode() + " " +
 							   ecommerceCargo.getStatus() + " " + ecommerceCargo.getSize() + " " + appAssistant.getDeliveryDay());
 			
