@@ -6,4 +6,8 @@ public interface ICargo<T> {
 	
 	//T is the Code format type (Integer or String)
 	public T getCargoCode();
+	
+	public Cargo.Days getDeliveryDay();
+	
+	public void setDeliveryDay(Cargo.Days day);
 }

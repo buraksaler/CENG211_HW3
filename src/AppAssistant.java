@@ -18,15 +18,12 @@ public class AppAssistant {
 	
 	public AppAssistant() throws IDNotCorrectException, CodeFormatLengthNotCorrectException{
 		updateEcommerceCargos();
+		updateNormalCargos();
 	}
 	
 	Date date = new Date();  
-
-	public enum Days{ MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} 
-	 
 	
-	
-	public Days getDeliveryDay() {
+	private Cargo.Days getDeliveryDay() {
 		String day = date.toString();
 		day = day.substring(0,3); //date returns whole date and time so we just need the day
 		int index;
@@ -50,11 +47,11 @@ public class AppAssistant {
 			//no delivery on sunday
 			index = 2;
 		}else {
-			System.out.println("Day format is not correct");
+			System.out.println("Something went wrong!");
 			index = -1;
 		}
 		
-		return Days.values()[index];
+		return Cargo.Days.values()[index];
 		
 	}
 	
@@ -63,54 +60,62 @@ public class AppAssistant {
 			String siteName = ecommerceCargo.getEcommerceSite();
 			if(siteName.equals("Amazon")) {
 				
-				if(amazonCounter <= IEcommerceCargo.AMAZON_LIMIT) {
+				if(amazonCounter < IEcommerceCargo.AMAZON_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
+					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					amazonCounter++;
 					acceptedCounter++;
 					
 				}else {
 					ecommerceCargo.setStatus("Not Accepted");
 					notAcceptedCounter++;
+					ecommerceCargo.setDeliveryDay(null);
 					
 				}
 				
 				
 			}else if(siteName.equals("Hepsiburada")) {
 				
-				if(hepsiburadaCounter <= IEcommerceCargo.HEPSIBURADA_LIMIT) {
+				if(hepsiburadaCounter < IEcommerceCargo.HEPSIBURADA_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
+					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
 					hepsiburadaCounter++;
 					
 				}else {
 					ecommerceCargo.setStatus("Not Accepted");
 					notAcceptedCounter++;
+					ecommerceCargo.setDeliveryDay(null);
 					
 				}
 			
 				
 			}else if(siteName.equals("N11")) {
 				
-				if(n11Counter <= IEcommerceCargo.N11_LIMIT) {
+				if(n11Counter < IEcommerceCargo.N11_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
+					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
 					n11Counter++;
 					
 				}else {
 					ecommerceCargo.setStatus("Not Accepted");
+					ecommerceCargo.setDeliveryDay(null);
 					notAcceptedCounter++;
 					
 				}
 				
 			}else{
 				
-				if(trendyolCounter <= IEcommerceCargo.TRENDYOL_LIMIT) {
+				if(trendyolCounter < IEcommerceCargo.TRENDYOL_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
+					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
 					trendyolCounter++;
 					
 				}else {
 					ecommerceCargo.setStatus("Not Accepted");
+					ecommerceCargo.setDeliveryDay(null);
 					notAcceptedCounter++;
 					
 				}
@@ -118,7 +123,11 @@ public class AppAssistant {
 			}
 		}
 	}
-	
+	private void updateNormalCargos() {
+		for(NormalCargo normalCargo : normalCargos) {
+			normalCargo.setDeliveryDay(getDeliveryDay());
+		}
+	}
 	public ArrayList<NormalCargo> getNormalCargos(){
 		return new ArrayList<NormalCargo>(this.normalCargos);
 	}

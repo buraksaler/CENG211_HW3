@@ -3,6 +3,9 @@ public abstract class Cargo<T> implements ICargo<T> {
 	
 	private final int size;
 	private final T cargoCode;
+	private Days day = null;
+	
+	public enum Days{ MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY} 
 	
 	public Cargo(int weight, int width, int length, int height, T cargoCode) {
 		
@@ -13,6 +16,13 @@ public abstract class Cargo<T> implements ICargo<T> {
 		
 	}
 	
+	public Cargo.Days getDeliveryDay(){
+		return day;
+	}
+	
+	public void setDeliveryDay(Days day){
+		this.day = day;
+	}
 	
 	@Override
 	public int getSize() {
