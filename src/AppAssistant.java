@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-
 public class AppAssistant {
 
 	private int amazonCounter = 0;

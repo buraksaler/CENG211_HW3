@@ -10,5 +10,4 @@ public class Trendyol extends EcommerceCargo<Integer> {
 		return "Trendyol";
 	}	
 
-
 }

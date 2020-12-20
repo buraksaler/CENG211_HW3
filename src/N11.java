@@ -9,6 +9,4 @@ public class N11 extends EcommerceCargo<String> {
 	public String getEcommerceSite() {
 		return "N11";
 	}
- 
-
 }

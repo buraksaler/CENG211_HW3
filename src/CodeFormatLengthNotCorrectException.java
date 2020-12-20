@@ -9,7 +9,4 @@ public class CodeFormatLengthNotCorrectException extends Exception {
 		super(message);
 	}
 	
-	
-	
-	
 }

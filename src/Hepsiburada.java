@@ -9,6 +9,5 @@ public class Hepsiburada extends EcommerceCargo<String> {
 	public String getEcommerceSite() {
 		return "Hepsiburada";
 	}
-
 	
 }

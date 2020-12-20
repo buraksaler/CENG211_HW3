@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileManager {
-	
 
 	private final String filePath;
 	private ArrayList<Cargo<?>> cargoObjects;
@@ -113,9 +112,6 @@ public class FileManager {
 		this.cargoObjects = new ArrayList<Cargo<?>>(cargos);
 	}
 	
-	
-	
-	
 	public ArrayList<EcommerceCargo<?>> getEcommerceCargos(){
 		ArrayList<EcommerceCargo<?>> ecommerceCargos = new ArrayList<EcommerceCargo<?>>();
 		for(Cargo<?> cargo : this.cargoObjects) {
@@ -126,7 +122,6 @@ public class FileManager {
 		return new ArrayList<EcommerceCargo<?>>(ecommerceCargos);
 	}
 	
-	
 	public ArrayList<NormalCargo> getNormalCargos(){
 		ArrayList<NormalCargo> normalCargos = new ArrayList<NormalCargo>();
 		for(Cargo<?> cargo : this.cargoObjects) {
@@ -135,7 +130,5 @@ public class FileManager {
 			}
 		}
 		return new ArrayList<NormalCargo>(normalCargos);
-		
-		
 	}
 }

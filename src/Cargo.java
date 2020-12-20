@@ -16,14 +16,16 @@ public abstract class Cargo<T> implements ICargo<T> {
 		
 	}
 	
-	public Cargo.Days getDeliveryDay(){
+	@Override
+	public Cargo.Days getDeliveryDay() {
 		return day;
 	}
-	
-	public void setDeliveryDay(Days day){
+
+	@Override
+	public void setDeliveryDay(Cargo.Days day) {
 		this.day = day;
 	}
-	
+
 	@Override
 	public int getSize() {
 		return size;
@@ -33,5 +35,23 @@ public abstract class Cargo<T> implements ICargo<T> {
 		return cargoCode;
 	}
 
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+
+	
+	
+	
 	
 }

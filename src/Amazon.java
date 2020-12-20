@@ -9,6 +9,4 @@ public class Amazon extends EcommerceCargo<Integer>{
 	public String getEcommerceSite() {
 		return "Amazon";
 	}
-
-	
 }
