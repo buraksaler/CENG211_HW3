@@ -7,7 +7,7 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 	private final String recipientName;
 	private final String recipientAddress;
 	
-	private int price = (int) (18.5 + (3* super.getSize()));
+	private double price = (18.5 + (3* super.getSize()));
 
 	public NormalCargo(int weight, int width, int length, int height, String senderId, String senderName,
 					   String recipientName, String recipientAddress) {		
@@ -26,12 +26,12 @@ public class NormalCargo extends Cargo<Integer> implements INormalCargo<Integer>
 	}
 	
 	@Override
-	public int getDiscountedPrice() {
+	public double getDiscountedPrice() {
 		return price;
 	}
 
 	@Override
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	

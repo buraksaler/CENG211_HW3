@@ -1,7 +1,7 @@
 
 public interface INormalCargo<T> extends ICargo<T> {	
 	
-	public int getPrice();
+	public double getPrice();
 	 
 	public String getSenderID();
 	
