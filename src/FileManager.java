@@ -75,7 +75,7 @@ public class FileManager {
 				
 				if(siteName.equals("Amazon")) {	
 					
-					if(cargoCode.length() != 7) {
+					if(cargoCode.length() != IEcommerceCargo.AMAZON_CODE_LENGTH) {
 						throw new CodeFormatLengthNotCorrectException();
 					}
 					
@@ -86,21 +86,21 @@ public class FileManager {
 										
 				}else if (siteName.equals("Hepsiburada")) {
 					
-					if(cargoCode.length() != 8) {
+					if(cargoCode.length() != IEcommerceCargo.HEPSIBURADA_CODE_LENGTH) {
 						throw new CodeFormatLengthNotCorrectException();
 					}
 					cargos.add(new Hepsiburada(weight, width, length, height, cargoCode));
 					
 				}else if (siteName.equals("N11")) {
 					
-					if(cargoCode.length() != 7) {
+					if(cargoCode.length() != IEcommerceCargo.N11_CODE_LENGTH) {
 						throw new CodeFormatLengthNotCorrectException();
 					}
 					cargos.add(new N11(weight, width, length, height, cargoCode));
 					
 				}else if (siteName.equals("Trendyol")) {
 					
-					if(cargoCode.length() != 8) {
+					if(cargoCode.length() != IEcommerceCargo.TRENDYOL_CODE_LENGTH) {
 						throw new CodeFormatLengthNotCorrectException();
 					}
 					int integerCargo = Integer.valueOf(cargoCode);

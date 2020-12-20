@@ -60,7 +60,7 @@ public class AppAssistant {
 			String siteName = ecommerceCargo.getEcommerceSite();
 			if(siteName.equals("Amazon")) {
 				
-				if(amazonCounter < IEcommerceCargo.AMAZON_LIMIT) {
+				if(amazonCounter < IEcommerceCargo.AMAZON_DAILY_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
 					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					amazonCounter++;
@@ -76,7 +76,7 @@ public class AppAssistant {
 				
 			}else if(siteName.equals("Hepsiburada")) {
 				
-				if(hepsiburadaCounter < IEcommerceCargo.HEPSIBURADA_LIMIT) {
+				if(hepsiburadaCounter < IEcommerceCargo.HEPSIBURADA_DAILY_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
 					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
@@ -92,7 +92,7 @@ public class AppAssistant {
 				
 			}else if(siteName.equals("N11")) {
 				
-				if(n11Counter < IEcommerceCargo.N11_LIMIT) {
+				if(n11Counter < IEcommerceCargo.N11_DAILY_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
 					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
@@ -107,7 +107,7 @@ public class AppAssistant {
 				
 			}else{
 				
-				if(trendyolCounter < IEcommerceCargo.TRENDYOL_LIMIT) {
+				if(trendyolCounter < IEcommerceCargo.TRENDYOL_DAILY_LIMIT) {
 					ecommerceCargo.setStatus("Accepted");
 					ecommerceCargo.setDeliveryDay(getDeliveryDay());
 					acceptedCounter++;
